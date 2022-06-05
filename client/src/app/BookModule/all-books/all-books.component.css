@@ -1,0 +1,49 @@
+.grid-container{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, auto);
+    padding: 3rem;
+}
+
+.card{
+    border: 1px solid #d3d3d3;
+    border-radius: .25rem;
+    width: 20rem;
+    margin-bottom: 5px;
+}
+
+.book-img{
+    background-size: cover;
+    min-height: 180px;
+    background-position: center;
+    background-color: #ccc;
+    align-items: center;
+    position: relative;
+}
+img{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    object-fit:inherit;
+    /* scale: contain; */
+}
+h4{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+} p{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+}
+
+.content{
+    padding: 15px;
+}
+
+button{
+    background-color: transparent;
+    border: 1px solid #2196F3;
+    padding: .2rem .5rem;
+    cursor: pointer;
+    margin-left: 11rem;
+    border-radius: .25rem;
+}

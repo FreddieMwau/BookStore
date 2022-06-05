@@ -1,0 +1,20 @@
+.navbar {
+    background-color: #1976d2;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+}
+
+a{
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    font-size: 17px;
+    margin: 0 30px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.link-selected{
+    border-bottom: 5px solid orange;
+}

@@ -1,0 +1,91 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+}
+
+
+p{
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: none;
+    font-size: 17px;
+    color: dimgray;
+    margin: 0 20px;
+}
+.logo{
+    color: white;
+    cursor: pointer;
+}
+.logo:hover{
+    color: orange;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    width: 98vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.text{
+    margin-top: 55px;
+}
+
+.panel {
+    height: 65vh;
+    width: 45vw;
+    align-self: center;
+    display: flex;
+    justify-content: space-evenly;
+    border: 1px solid purple;
+    border-radius: 6px;
+    margin: 50px 0;
+}
+
+.content {
+    margin-top: 35px;
+}
+
+h4 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-left: 20px;
+    color: dimgray;
+}
+
+span {
+    color: purple;
+    font-size: 24px;
+}
+.txt{
+    margin-top: 5px;
+}
+a{
+    margin-left: 10px;
+    text-decoration: none;
+    color:darkorange;
+    font-family: 'Courier New', Courier, monospace;
+}
+a:hover{
+    color: black;
+}
+.button {
+    width: 160px;
+    padding: 9px;
+    margin-top: 50px;
+    color: black;
+    background-color: orange;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    border: none;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.button:hover {
+    color: white;
+}

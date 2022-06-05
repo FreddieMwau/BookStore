@@ -1,0 +1,14 @@
+<div class="grid-container">
+    <!-- card -->
+    <div class="card" *ngFor="let book of books">
+        <div class="book-img">
+            <img src="{{book.bookImage}}" alt="">
+        </div>
+        <div class="content">
+            <h4>{{book.bookTitle}}</h4>
+            <p>Author {{book.bookAuthor}}</p>
+            <p>Published {{book.publishedDate}}</p>
+            <button>Read more</button>
+        </div>
+    </div>
+</div>

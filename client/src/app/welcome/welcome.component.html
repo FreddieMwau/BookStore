@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="panel">
+        <div class="content">
+            <h4>Welcome to <br> <span>Chamberlain Heights E-Library</span> </h4>
+            <p class="text">To access our library services, <br> we kindly urge you to provide you credentials.</p>
+            <p class="text ">Have an account ? <a routerLink="auth/login" >Log in</a></p>
+            <p class="txt">Don't have an account? <a routerLink="auth/signup">Sign Up</a></p>
+        </div>
+        <div class="lottie-container">
+            <ng-lottie [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+        </div>
+    </div>
+</div>
