@@ -2,7 +2,8 @@ import { v1 as uid } from 'uuid'
 import mssql from 'mssql'
 import sqlConfig from '../config/config'
 import dotenv from 'dotenv'
-import { NextFunction, Request, RequestHandler, Response } from 'express'
+import { RequestHandler } from 'express'
+import { addBookSchema } from '../helpers/addBookValidator'
 dotenv.config()
 
 export const createBook: RequestHandler = async (req, res) => {
@@ -10,6 +11,10 @@ export const createBook: RequestHandler = async (req, res) => {
         const bookId = uid()
         const { bookTitle, bookImageUrl, bookDescription, bookAuthor, publishedDate } = req.body as { bookTitle: string, bookImageUrl:string, bookDescription:string, bookAuthor:string, publishedDate:number}
         let dbPool = await mssql.connect(sqlConfig)
+        const { error } = addBookSchema.validate(req.body)
+        if (error) {
+            return res.json({ error: error.details[0].message })
+        }
         await dbPool.request()
             .input('bookId', mssql.VarChar, bookId)
             .input('bookTitle', mssql.VarChar, bookTitle)

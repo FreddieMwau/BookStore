@@ -28,13 +28,20 @@ const uuid_1 = require("uuid");
 const mssql_1 = __importDefault(require("mssql"));
 const config_1 = __importDefault(require("../config/config"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const signupValidator_1 = require("../helpers/signupValidator");
+const loginValidator_1 = require("../helpers/loginValidator");
 dotenv_1.default.config();
 const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const userId = (0, uuid_1.v1)();
         const { userName, userEmail, userPassword } = req.body;
         let dbPool = yield mssql_1.default.connect(config_1.default);
+        const { error } = signupValidator_1.signupSchema.validate(req.body);
+        if (error) {
+            return res.json({ error: error.details[0].message });
+        }
         const hashedPassword = yield bcrypt_1.default.hash(userPassword, 15);
         yield dbPool.request()
             .input('userId', mssql_1.default.VarChar, userId)
@@ -53,6 +60,10 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         let dbPool = yield mssql_1.default.connect(config_1.default);
         const { userEmail, userPassword } = req.body;
+        const { error } = loginValidator_1.loginSchema.validate(req.body);
+        if (error) {
+            return res.json({ error: error.details[0].message });
+        }
         let user = yield dbPool.request()
             .input('userEmail', mssql_1.default.VarChar, userEmail)
             .execute('getUserByEmail');
@@ -64,7 +75,8 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             const { userPassword } = record, rest = __rest(record, ["userPassword"]);
             return rest;
         });
-        res.status(200).json({ message: 'Logged in successfully' });
+        const token = jsonwebtoken_1.default.sign(user.recordset[0].userEmail, process.env.SECRET_KEY);
+        res.status(200).json({ message: 'Logged in successfully', token });
     }
     catch (error) {
         res.json({ error: error.message });

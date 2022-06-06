@@ -17,12 +17,17 @@ const uuid_1 = require("uuid");
 const mssql_1 = __importDefault(require("mssql"));
 const config_1 = __importDefault(require("../config/config"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const addBookValidator_1 = require("../helpers/addBookValidator");
 dotenv_1.default.config();
 const createBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const bookId = (0, uuid_1.v1)();
         const { bookTitle, bookImageUrl, bookDescription, bookAuthor, publishedDate } = req.body;
         let dbPool = yield mssql_1.default.connect(config_1.default);
+        const { error } = addBookValidator_1.addBookSchema.validate(req.body);
+        if (error) {
+            return res.json({ error: error.details[0].message });
+        }
         yield dbPool.request()
             .input('bookId', mssql_1.default.VarChar, bookId)
             .input('bookTitle', mssql_1.default.VarChar, bookTitle)
