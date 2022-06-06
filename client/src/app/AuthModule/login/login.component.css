@@ -74,3 +74,14 @@ p{
 button:hover {
     color: white;
 }
+
+a {
+    margin-left: 50px;
+    text-decoration: none;
+    color: darkorange;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+a:hover {
+    color: black;
+}

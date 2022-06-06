@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../Service/auth-service.service';
 
 @Component({
   selector: 'app-registration',
@@ -8,14 +9,35 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  registrationDetails ={
+    userName:'',
+    userEmail:'',
+    userPassword:''
+  }
+  msg:string=''
+
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  register() {
-    setTimeout(() => {
-      this.router.navigate(['/dashboard'])
-    }, 2500)
+  registerUser() {
+    this.authService.registerUser(this.registrationDetails).subscribe(
+      (res) => {
+        this.msg = res.message
+        localStorage.setItem('token', res.token)
+        if (res.message == "User created successfully"){
+          setTimeout(() => {
+            this.router.navigate(['/dashboard'])
+          }, 3500)
+        } else {
+          this.msg = res.message
+        }
+      },
+      (error) => {
+        console.log(error.error.message);
+        
+      }
+    )
    }
 }

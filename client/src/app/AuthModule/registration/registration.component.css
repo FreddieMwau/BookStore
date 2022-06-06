@@ -11,7 +11,7 @@
 }
 
 .panel {
-    height: 70vh;
+    height: 78vh;
     width: 45vw;
     align-items: center;
     border: 1px solid purple;
@@ -66,4 +66,21 @@ button {
 
 button:hover {
     color: white;
+}
+p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    text-align: center;
+    color: dimgray;
+}
+
+a {
+    margin-left: 50px;
+    text-decoration: none;
+    color: darkorange;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+a:hover {
+    color: black;
 }

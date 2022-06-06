@@ -1,16 +1,20 @@
 <div class="container">
     <div class="panel">
         <h4>Sign Up</h4>
+        <p>{{msg}}</p>
 
-        <div class="content">
-            <label>Full Names</label>
-            <input type="text">
-            <label>Email Address</label>
-            <input type="email">
-            <label>Password</label>
-            <input type="password">
-            <button (click)="register()">Register</button>
-        </div>
-
+        <form>
+            <div class="content">
+                <label>Full Names</label>
+                <input type="text" [(ngModel)]="registrationDetails.userName" name="userName">
+                <label>Email Address</label>
+                <input type="email" [(ngModel)]="registrationDetails.userEmail" name="userEmail">
+                <label>Password</label>
+                <input type="password" [(ngModel)]="registrationDetails.userPassword" name="userPassword">
+                <button (click)="registerUser()">Register</button>
+            </div>
+        </form>
+    
+        <a routerLink="/login">Log In</a>
     </div>
 </div>
