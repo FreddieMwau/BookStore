@@ -9,19 +9,21 @@ dotenv.config()
 export const createBook: RequestHandler = async (req, res) => {
     try{
         const bookId = uid()
-        const { bookTitle, bookImageUrl, bookDescription, bookAuthor, publishedDate } = req.body as { bookTitle: string, bookImageUrl:string, bookDescription:string, bookAuthor:string, publishedDate:number}
+        // this destructures the request body and only remains with the book property of the request just to handle this endpoint
+        const {users, ...book} = req.body
+        // const { bookTitle, bookImageUrl, bookDescription, bookAuthor, publishedDate } = req.body as { bookTitle: string, bookImageUrl:string, bookDescription:string, bookAuthor:string, publishedDate:number}
         let dbPool = await mssql.connect(sqlConfig)
-        const { error } = addBookSchema.validate(req.body)
+        const { error } = addBookSchema.validate(book)
         if (error) {
             return res.json({ error: error.details[0].message })
         }
         await dbPool.request()
             .input('bookId', mssql.VarChar, bookId)
-            .input('bookTitle', mssql.VarChar, bookTitle)
-            .input('bookImageUrl', mssql.VarChar, bookImageUrl)
-            .input('bookAuthor', mssql.VarChar, bookAuthor)
-            .input('bookDescription', mssql.VarChar, bookDescription)
-            .input('publishedDate', mssql.Int, publishedDate)
+            .input('bookTitle', mssql.VarChar, book.bookTitle)
+            .input('bookImageUrl', mssql.VarChar, book.bookImageUrl)
+            .input('bookAuthor', mssql.VarChar, book.bookAuthor)
+            .input('bookDescription', mssql.VarChar, book.bookDescription)
+            .input('publishedDate', mssql.Int, book.publishedDate)
             .execute('addBook')
 
         res.status(200).json({message:"Book saved successfully"})
