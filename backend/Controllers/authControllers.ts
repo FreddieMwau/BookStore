@@ -29,7 +29,8 @@ export const createUser = async (req:Request, res:Response, next: NextFunction) 
             .input('userEmail', mssql.VarChar, userEmail)
             .input('userPassword', mssql.VarChar, hashedPassword)
             .execute('createUser')
-        res.status(200).json({message: "User created successfully"})
+        const token = jwt.sign(userId, process.env.SECRET_KEY as string)
+        res.status(200).json({message: "User created successfully", token})
     } catch (error:any){
         res.json({error: error.message})
     }

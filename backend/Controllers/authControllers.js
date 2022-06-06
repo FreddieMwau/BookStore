@@ -49,7 +49,8 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
             .input('userEmail', mssql_1.default.VarChar, userEmail)
             .input('userPassword', mssql_1.default.VarChar, hashedPassword)
             .execute('createUser');
-        res.status(200).json({ message: "User created successfully" });
+        const token = jsonwebtoken_1.default.sign(userId, process.env.SECRET_KEY);
+        res.status(200).json({ message: "User created successfully", token });
     }
     catch (error) {
         res.json({ error: error.message });

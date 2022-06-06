@@ -3,9 +3,9 @@ import { createBook, deleteBook, getAllBooks, getBookById, updateBook } from '..
 import { verifyToken } from '../Middleware/verify'
 const booksRouter = express.Router()
 
-booksRouter.post('/create', createBook)
+booksRouter.post('/create', verifyToken, createBook)
 booksRouter.get('/', verifyToken, getAllBooks)
-booksRouter.get('/book/:bookId', getBookById)
+booksRouter.get('/book/:bookId', verifyToken, getBookById)
 booksRouter.delete('/delete/:bookId', verifyToken, deleteBook)
 booksRouter.put('/update/:bookId', verifyToken, updateBook)
 

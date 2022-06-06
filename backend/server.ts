@@ -1,10 +1,14 @@
 import express from 'express'
+import cors from 'cors'
+
+
 import sqlConfig from './config/config'
 import mssql from 'mssql'
 import authRouter from './Routes/authRoutes'
 import booksRouter from './Routes/bookRoutes'
 
 const app = express()
+app.use(cors( {origin: true}))
 app.use(express.json())
 app.use('/user', authRouter)
 app.use('/books', booksRouter)

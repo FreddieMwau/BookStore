@@ -13,11 +13,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const config_1 = __importDefault(require("./config/config"));
 const mssql_1 = __importDefault(require("mssql"));
 const authRoutes_1 = __importDefault(require("./Routes/authRoutes"));
 const bookRoutes_1 = __importDefault(require("./Routes/bookRoutes"));
 const app = (0, express_1.default)();
+app.use((0, cors_1.default)({ origin: true }));
 app.use(express_1.default.json());
 app.use('/user', authRoutes_1.default);
 app.use('/books', bookRoutes_1.default);
