@@ -11,6 +11,8 @@ import { AuthenticationModule } from './AuthModule/authentication.module';
 import { BooksModule } from './BookModule/books.module';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { AuthService } from './AuthModule/Service/auth-service.service';
+import { AuthGuardService } from './AuthModule/Service/auth-guard.service';
 
 
 
@@ -33,7 +35,10 @@ export function playerFactory() {
     FormsModule,
     [LottieModule.forRoot({ player: playerFactory })]
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

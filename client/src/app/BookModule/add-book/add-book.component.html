@@ -1,18 +1,21 @@
 <div class="container">
     <div class="panel">
 
+        <h4>Add Book</h4>
+        <p>{{msg}}</p>
+
         <div class="content">
             <label>Book Title</label>
-            <input type="text">
+            <input type="text" [(ngModel)]="addBookDetails.bookTitle" name="bookTitle">
             <label>Book Author</label>
-            <input type="text">
-            <label>Book Chief Editor</label>
-            <input type="text">
+            <input type="text" [(ngModel)]="addBookDetails.bookAuthor" name="bookAuthor">
+            <label>Book Description</label>
+            <textarea type="text" [(ngModel)]="addBookDetails.bookDescription" name="bookDescription" rows="4" cols="50"></textarea>
             <label>Book Image Link</label>
-            <input type="text">
+            <input type="text" [(ngModel)]="addBookDetails.bookImageUrl" name="bookImageUrl">
             <label>Published year</label>
-            <input type="number">
-            <button (click)="saveBook()">Register</button>
+            <input type="number" [(ngModel)]="addBookDetails.publishedDate" name="publishedDate">
+            <button (click)="saveBook()">Add Book</button>
         </div>
 
     </div>

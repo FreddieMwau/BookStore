@@ -1,0 +1,83 @@
+.container{
+    display: flex;
+    height: 65vh;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.book-img {
+    background-size: cover;
+    min-height: 130px;
+    width: 45%;
+    background-position: center;
+    background-color: #ccc;
+    border-radius: 8px;
+    align-items: center;
+    position: relative;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    object-fit: inherit;
+}
+
+.book-details{
+    width: 45%;
+}
+
+h3{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    margin-left: 40px;
+    color: black;
+    font-weight: 600;
+}
+
+h5{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: dimgray;
+    font-weight: 400;
+    margin-left: 60px;
+    margin-top: 10px;
+}
+
+p{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    color: dimgray;
+    font-weight: 400;
+    margin-top: 15px;
+    margin-left: 60px;
+}
+
+button{
+    background-color: transparent;
+    border: 1px solid #2196F3;
+    padding: .2rem .5rem;
+    cursor: pointer;
+    width: 6rem;
+    margin-top: 8rem;
+    margin-left: 7rem;
+    border-radius: .25rem;
+}
+
+.edit{
+    border: 1px solid green;
+}
+
+.edit:hover{
+    background-color: green;
+    color: white;
+}
+
+.delete{
+    border: 1px solid maroon;
+}
+
+.delete:hover{
+    background-color: maroon;
+    color: white;
+}

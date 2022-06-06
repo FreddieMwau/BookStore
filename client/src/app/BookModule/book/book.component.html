@@ -1,0 +1,13 @@
+<div class="container" *ngIf="book">
+    <div class="book-img">
+        <img src="{{book.bookImageUrl}}" alt="">
+    </div>
+
+    <div class="book-details">
+        <h3>{{book.bookTitle}}</h3>
+        <h5>{{book.bookAuthor}}</h5>
+        <p>{{book.bookDescription}}</p>
+        <button (click)="editBook(book.bookId)" class="edit">Edit</button>
+        <button (click)="deleteBook(book.bookId)" class="delete">Delete</button>
+    </div>
+</div>

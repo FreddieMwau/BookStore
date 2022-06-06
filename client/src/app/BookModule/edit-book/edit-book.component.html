@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="panel">
+
+        <h4>Edit Book</h4>
+
+        <p>{{msg}}</p>
+
+        <div class="content" *ngIf="book">
+            <label>Book Title</label>
+            <input type="text" [(ngModel)]="book.bookTitle" name="bookTitle" value="{{book.bookTitle}}">
+            <label>Book Author</label>
+            <input type="text" [(ngModel)]="book.bookAuthor"  name="bookAuthor" value="{{book.bookAuthor}}">
+            <label>Book Description</label>
+            <textarea type="text" [(ngModel)]="book.bookDescription"  name="bookDescription" rows="4"
+                cols="50" value="{{book.bookDescription}}"></textarea>
+            <label>Book Image Link</label>
+            <input type="text" [(ngModel)]="book.bookImageUrl" name="bookImageUrl" value="{{book.bookImageUrl}}">
+            <label>Published year</label>
+            <input type="number" [(ngModel)]="book.publishedDate" name="publishedDate" value="{{book.publishedDate}}">
+            <button (click)="saveChanges(book.bookId)">Edit Book</button>
+        </div>
+
+    </div>
+</div>
