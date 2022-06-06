@@ -1,5 +1,6 @@
 export interface BooksModel{
-    bookImage: string
+    bookId?:string
+    bookImageUrl: string
     bookTitle: string
     bookAuthor: string
     bookDescription?:string

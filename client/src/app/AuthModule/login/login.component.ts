@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
+import { AuthService } from '../Service/auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,13 @@ import { AnimationOptions } from 'ngx-lottie';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  logInDetails = {
+    userEmail:'',
+    userPassword:''
+  }
+  msg:string=''
+
+  constructor(private router:Router, private authService:AuthService) { }
 
   ngOnInit(): void {
   }
@@ -24,9 +31,22 @@ export class LoginComponent implements OnInit {
     // console.log(animationItem);
   }
 
-  register(){
-    setTimeout(()=>{
-      this.router.navigate(['/dashboard'])
-    }, 2500)
+  logInUser(){
+    this.authService.logInUser(this.logInDetails).subscribe(
+      (res) => {
+        this.msg = res.message
+        localStorage.setItem('token', res.token)
+        if (res.message == "Logged in successfully"){
+          setTimeout(() => {
+            this.router.navigate(['/dashboard'])
+          }, 3500)
+        } else{
+          this.msg = res.message
+        }
+      },
+      (error) => {
+        console.log(error.error);
+      }
+    )    
   }
 }

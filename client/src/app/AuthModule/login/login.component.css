@@ -64,6 +64,13 @@ button{
     border-radius: 10px;
 }
 
+p{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    text-align: center;
+    color: dimgray;
+}
+
 button:hover {
     color: white;
 }

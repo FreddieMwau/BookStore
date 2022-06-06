@@ -1,4 +1,10 @@
 <div class="navbar">
-    <a routerLink="" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="link-selected">E-Library</a>
-    <a routerLink="/dashboard" routerLinkActive="link-selected">Dashboard</a>
+    <div class="links">
+        <a routerLink="" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="link-selected">E-Library</a>
+        <a routerLink="/dashboard" routerLinkActive="link-selected">Dashboard</a>
+    </div>
+    <div class="buttons">
+        <a routerLink="auth/login" *ngIf="!authService.isLoggedIn()" class="buttons">Log In</a>
+        <button (click)="authService.logOut()" *ngIf="authService.isLoggedIn()">Log Out</button>
+    </div>
 </div>

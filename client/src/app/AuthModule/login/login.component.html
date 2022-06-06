@@ -1,14 +1,17 @@
 <div class="container">
     <div class="panel">
         <h4>Log In</h4>
+        <p>{{msg}}</p>
 
-        <div class="content">
-            <label>Email Address</label>
-            <input type="email">
-            <label>Password</label>
-            <input type="password">
-            <button (click)="register()">Login</button>
-        </div>
+        <form>
+            <div class="content">
+                <label>Email Address</label>
+                <input type="email" [(ngModel)]="logInDetails.userEmail" name="userEmail">
+                <label>Password</label>
+                <input type="password" [(ngModel)]="logInDetails.userPassword" name="userPassword">
+                <button (click)="logInUser()">Login</button>
+            </div>  
+        </form>
         
     </div>
 </div>

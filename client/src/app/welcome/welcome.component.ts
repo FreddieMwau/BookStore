@@ -24,9 +24,4 @@ export class WelcomeComponent implements OnInit {
     // console.log(animationItem);
   }
 
-  registration(){
-    console.log("Registration on going");
-    this.router.navigate(['/auth']);
-  }
-
 }
